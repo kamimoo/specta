@@ -132,9 +132,7 @@
 - (NSString *)name {
   NSString *specName = NSStringFromClass([self class]);
   SPTExample *compiledExample = [self spt_getCurrentExample];
-  NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"];
-  NSString *exampleName = [[compiledExample.name componentsSeparatedByCharactersInSet:[charSet invertedSet]] componentsJoinedByString:@"_"];
-  return [NSString stringWithFormat:@"-[%@ %@]", specName, exampleName];
+  return [NSString stringWithFormat:@"-[%@ %@]", specName, compiledExample.name];
 }
 
 - (void)recordFailureWithDescription:(NSString *)description inFile:(NSString *)filename atLine:(NSUInteger)lineNumber expected:(BOOL)expected {
